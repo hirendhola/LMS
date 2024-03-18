@@ -19,6 +19,10 @@ app.use(express.json())
 app.use("/student", studentrouter)
 app.use("/admin", adminrouter)
 
+app.get("/", (req, res) => {
+    res.status(200).send("WORKING!!!")
+})
+
 mongoose
     .connect(process.env.MONGO_CONNECTION_URL)
     .then(() => {
