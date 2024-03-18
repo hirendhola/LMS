@@ -36,7 +36,7 @@ exports.signup = async (req, res) => {
   
 //login
 exports.login = async (req, res) => {
-    const { enrollmentNumber, password } = req.body;
+    const { email, password } = req.body;
 
     try {
         if (!req.exists) {
@@ -81,7 +81,7 @@ exports.login = async (req, res) => {
 
 exports.getStudent = async (req, res) => {
     try {
-        const student = await Student.findById(req.Student.id, "-password");
+        const student = await Student.findById(req.user.id, "-password");
         if (!student) return res.status(404).json({ message: "Student not found" });
         res.status(200).json({ student });
     } catch (error) {

@@ -21,8 +21,11 @@ const hodSchema = new Schema({
         enum: ['HOD'],
         required: true
     },
-    
+    department: {
+        type: Schema.Types.ObjectId,
+        ref: 'Department'
+    }
 });
 
 const HOD = mongoose.model("HOD", hodSchema);
-module.exports = { HOD };
+module.exports =  HOD ;

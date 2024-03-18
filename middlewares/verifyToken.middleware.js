@@ -9,14 +9,14 @@ exports.verifyToken = async (req, res, next) => {
     }
 
     try {
-        jwt.verify(accessToken, process.env.JSONWENTOKEN_SIGN_SECRET, (err, student) => {
+        jwt.verify(accessToken, process.env.JSONWENTOKEN_SIGN_SECRET, (err, user) => {
             if (err) {
                 console.error("Error verifying token:", err);
                 return res.status(500).json({ error: "Internal server error" });
             }
-            req.Student = student;
-            req.id = student.id; 
-            next(); 
+            req.user = user;
+            req.id = user.id;
+            next();
         });
     } catch (err) {
         console.error("Error verifying token:", err);
