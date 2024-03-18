@@ -28,4 +28,4 @@ const hodSchema = new Schema({
 });
 
 const HOD = mongoose.model("HOD", hodSchema);
-module.exports =  HOD ;
+module.exports = HOD;
