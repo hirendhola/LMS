@@ -18,9 +18,7 @@ app.use(express.json())
 app.use("/student", studentrouter)
 app.use("/admin", adminrouter)
 
-app.get("/", (req, res) => {
-    res.status(200).send("WORKING!!!")
-})
+const PORT = process.env.PORT || 3000
 
 mongoose
     .connect(process.env.MONGO_CONNECTION_URL)
@@ -31,10 +29,11 @@ mongoose
     })
     .catch(error => console.log(error))
 
-const PORT = process.env.PORT || 3000
+
 app.get("/", (req, res) => {
     res.status(200).json({
         msg: "server is running"
     })
 })
+
 
