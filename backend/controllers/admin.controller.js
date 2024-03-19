@@ -19,23 +19,23 @@ exports.signup = async (req, res) => {
             password: hashedPassword,
             role
         });
-        
+
         await hod.save()
-        .then(hod => {
-          const newDepartment = new Department({
-            name: department, // Example department name
-            hod: hod._id, // Associate the HOD with the department
-          });
-      
-          // Save the Department to the database
-          return newDepartment.save();
-        })
-        .then(department => {
-          console.log('Department created with HOD:', department);
-        })
-        .catch(error => {
-          console.error('Error creating department:', error);
-        });
+            .then(hod => {
+                const newDepartment = new Department({
+                    name: department, // Example department name
+                    hod: hod._id, // Associate the HOD with the department
+                });
+
+                // Save the Department to the database
+                return newDepartment.save();
+            })
+            .then(department => {
+                console.log('Department created with HOD:', department);
+            })
+            .catch(error => {
+                console.error('Error creating department:', error);
+            });
         res.status(201).json({
             message: "Signup successful",
             hod: {
@@ -49,7 +49,7 @@ exports.signup = async (req, res) => {
     }
 };
 
-  
+
 //login
 exports.login = async (req, res) => {
     const { email, password } = req.body;
